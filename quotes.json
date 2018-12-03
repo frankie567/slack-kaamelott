@@ -1,0 +1,17 @@
+{
+  "arthur": {
+    "name": "Roi Arthur",
+    "quotes": [
+      "Sortez-vous les doigts du cuuuuul !",
+      "Ça vous fait pas mal à la tête de glandouiller vingt-quatre heures sur vingt-quatre ?",
+      "Non mais... Que vous soyez débile c'est une chose, mais là y a de la mauvaise volonté quand même."
+    ]
+  },
+  "perceval": {
+    "name": "Perceval",
+    "quotes": [
+      "C'est pas faux !",
+      "On en a gros !"
+    ]
+  }
+}
