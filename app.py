@@ -31,7 +31,7 @@ def verify_slack_signature(f):
         if req_timestamp is None or req_signature is None:
             return abort(401)
 
-        req = str.encode(f'v0:{str(timestamp)}:') + request.data
+        req = str.encode(f'v0:{str(req_timestamp)}:') + request.data
         request_hash = 'v0=' + hmac.new(
             str.encode(SLACK_SIGNING_SECRET),
             req, hashlib.sha256
