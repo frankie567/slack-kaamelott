@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import abort, Flask, jsonify, request, send_from_directory, url_for
+from flask import abort, Flask, request, send_from_directory, url_for
 import hashlib
 import hmac
 import json
