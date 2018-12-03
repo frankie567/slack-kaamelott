@@ -6,6 +6,7 @@ import json
 import logging
 import os
 import random
+import requests
 
 SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
 
@@ -48,15 +49,17 @@ def verify_slack_signature(f):
 @verify_slack_signature
 def character(character):
     app.logger.debug(f'Character: {character}')
+    response_url = request.form['response_url']
+
     try:
-        response = {
+        requests.post(response_url, json={
             'response_type': 'in_channel',
             'username': quotes[character]['name'],
             'icon_url': url_for('avatar', character=character, _external=True),
             'text': random.choice(quotes[character]['quotes']),
-        }
+        })
 
-        return jsonify(response), 200
+        return '', 200
     except KeyError:
         return 'Connais pas ce clampin.', 404
 
