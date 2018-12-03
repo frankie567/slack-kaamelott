@@ -52,13 +52,17 @@ def character(character):
     response_url = request.form['response_url']
 
     try:
-        requests.post(response_url, json={
+        response_payload = {
             'response_type': 'in_channel',
             'as_user': False,
             'username': quotes[character]['name'],
             'icon_url': url_for('avatar', character=character, _external=True),
             'text': random.choice(quotes[character]['quotes']),
-        })
+        }
+
+        app.logger.debug(f'Response payload: {response_payload}')
+
+        requests.post(response_url, json=response_payload)
 
         return '', 200
     except KeyError:
