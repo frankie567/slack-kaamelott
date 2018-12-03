@@ -54,6 +54,7 @@ def character(character):
     try:
         requests.post(response_url, json={
             'response_type': 'in_channel',
+            'as_user': False,
             'username': quotes[character]['name'],
             'icon_url': url_for('avatar', character=character, _external=True),
             'text': random.choice(quotes[character]['quotes']),
