@@ -52,12 +52,19 @@ def character(character):
     response_url = request.form['response_url']
 
     try:
+        avatar_url = url_for('avatar', character=character, _external=True)
         response_payload = {
             'response_type': 'in_channel',
             'as_user': False,
             'username': quotes[character]['name'],
-            'icon_url': url_for('avatar', character=character, _external=True),
-            'text': random.choice(quotes[character]['quotes']),
+            'icon_url': avatar_url,
+            'attachments': [
+                {
+                    'author_name': quotes[character]['name'],
+                    'text': random.choice(quotes[character]['quotes']),
+                    'thumb_url': avatar_url,
+                }
+            ]
         }
 
         app.logger.debug(f'Response payload: {response_payload}')
